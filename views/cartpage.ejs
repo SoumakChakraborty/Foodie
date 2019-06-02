@@ -1,0 +1,45 @@
+<html lang="en">
+    <head>
+        <title>Foodie</title>
+        <link rel="stylesheet" href="/style.css">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Maven+Pro&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Jura&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Dancing+Script&display=swap" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+    </head>
+    <body class="landing">
+     <%if(cart.length>0){%> 
+        <h1 id="app-title">Cart of <%=username%></h1>
+      <form action="/checkout" method="POST" id="frm">  
+       <%for(var i=0;i<cart.length;i++){%> 
+         <div class="user-cart">
+            <img src="<%=cart[i].photo%>">
+            <a href="/delete/<%=cart[i].food_type%>/<%=cart[i].food_name%>"><i class="fas fa-times delete-button"></i></a>
+           <div>   
+            <p><strong>Name</strong> - <%=cart[i].food_name%></p>
+            <p><strong>Type</strong> - <%=cart[i].food_type%></p>
+            <p class="price"><strong>Price</strong> - <i class="fas fa-rupee-sign"></i><%=cart[i].price%></p>
+            <label>Quantity <select name="quantity" class="quantity">
+                    <%for(var j=1;j<=10;j++){%>
+                       <option value="<%=j%>"><%=j%></option>
+                     <%}%>   
+                 </select>
+              </label>  
+           </div>
+         </div>
+       <%}%>
+       <textarea name="address" id="cart-address" placeholder="Enter address" required></textarea><br>
+       <input type="tel" name="phone" id="cart-phone" placeholder="Enter phone number" required><br>
+    <input type="submit" value="Go for checkout" id="checkout">
+    </form>
+    <script src="/checkout_price.js"></script> 
+       <%}else{%>
+        <h1 id="app-title">No items found on cart for <%=username%></h1>
+      <%}%>  
+    </body>
+</html>

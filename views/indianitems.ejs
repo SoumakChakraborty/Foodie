@@ -1,0 +1,58 @@
+<html lang="en">
+    <head>
+        <title>Foodie</title>
+        <link rel="stylesheet" href="/style.css">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Maven+Pro&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Jura&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Dancing+Script&display=swap" rel="stylesheet">
+    </head>
+    <body class="landing">
+    <nav class="navbar">
+            <div id="navbar-title">  
+            <a href="#">Foodie-<span><em>Your food ordering platform</em></span></a>
+            </div>
+            <%if(state==false){%> 
+             <div id="signdiv">
+               <a href="#">Sign In</a>
+             </div>
+            <%}else{%>
+             <ul id="userlist">
+               <li><a href="#"><img src="/user.png"></a>
+                 <ul>
+                     <li><a href="#">My cart</a></li>
+                     <li><a href="/changepass">Change password</a></li>
+                     <li><a href="#">View profile</a></li>
+                     <li><a href="#">Contact Us</a></li>
+                     <li><a href="#">Edit profile</a></li>
+                     <li><a href="#">Your orders</a></li>
+                     <li><a href="/signout">Sign Out</a></li>
+                  </ul>
+               </li>       
+             </ul>
+            <%}%>
+    </nav>
+    <%if(state==false){%> 
+        <div class="formdiv1">
+        </div>
+       <%}%>
+      <div id="deals">
+                <%for(var i=0;i<food.length;i++){%> 
+                      <a href="/item/<%=food[i].type%>/<%=food[i].name%>">
+                      <div class="deal-item">
+                      <img src="<%=food[i].photo%>">  
+                      <p><%=food[i].name%></p>
+                    </div>
+                  </a>  
+                 <%}%>       
+                </div> 
+            <%if(state==false){%>   
+               <script src="/show1.js"></script>
+            <%}%>     
+    </body>
+</html>

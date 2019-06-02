@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>Foodie</title>
+        <link rel="stylesheet" href="/style.css">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Dancing+Script&display=swap" rel="stylesheet">
+    </head>
+    <body class="landing">
+     <%if(orders.length>0){%> 
+        <h1 id="app-title">Orders of <%=username%></h1>
+       <%for(var i=0;i<orders.length;i++){%> 
+        <div class="user-orders">
+            <img src="<%=orders[i].photo%>">
+            <div>
+            <p><strong>Name</strong> - <%=orders[i].name%></p>
+            <p><strong>Type</strong> - <%=orders[i].type%></p>
+            <p><strong>Quantity</strong> - <%=orders[i].quantity%></p>
+            <p><strong>Price</strong> - <%=orders[i].price%></p>
+         </div>
+        </div>
+        <%}%>
+       <%}else{%>
+        <h1 id="app-title">No orders found for <%=username%></h1>
+      <%}%>  
+    </body>
+</html>

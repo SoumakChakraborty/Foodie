@@ -1,0 +1,134 @@
+<html lang="en">
+    <head>
+        <title>Foodie</title>
+        <link rel="stylesheet" href="/style.css">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Maven+Pro&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Jura&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Dancing+Script&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&display=swap" rel="stylesheet">
+    </head>
+    <body class="landing">
+       <nav class="navbar">
+           <div id="navbar-title">  
+           <a href="#">Foodie-<span>Your food ordering platform</span></a>
+           </div>
+           <%if(state==false){%> 
+            <div id="signdiv">
+              <a href="#">Sign In</a>
+            </div>
+           <%}else{%>
+            <ul id="userlist">
+              <li><a href="#"><img src="/user.png"></a>
+                <ul>
+                    <li><a href="/cart">My cart</a></li>
+                    <li><a href="/orders">My orders</a></li>
+                    <li><a href="/changepass">Change password</a></li>
+                    <li><a href="/signout">Sign Out</a></li>
+                 </ul>
+              </li>
+            </ul>
+           <%}%>
+      </nav>
+      <p id="phone-contact"><i class="fas fa-phone phone-icon"></i> 9867651110</p>
+      <p id="email-contact"><i class="fas fa-envelope email-icon"></i> yelpcamp500@gmail.com</p>
+      <nav class="items-nav">
+          <ul id="main"> 
+           <li id="indian"><a href="#">Indian</a>
+             <ul>
+               <li><a href="/item/North Indian">North Indian</a></li>
+               <li><a href="/item/South Indian">South Indian</a></li>
+               <li><a href="/item/Bengali">Bengali</a></li>
+               <li><a href="/item/West Indian">West Indian</a></li>
+             </ul>
+           </li>
+           <li id="chinese"><a href="#">Chinese</a>
+             <ul>
+                <%for(var i=0;i<Chinese.length;i++){%>
+                    <li><a href="/item/<%=Chinese[i].type%>/<%=Chinese[i].name%>"><%=Chinese[i].name%></a></li>
+                 <%}%>
+             </ul>
+           </li>
+           <li id="mexican"><a href="#">Mexican</a>
+             <ul>
+                <%for(var i=0;i<Mexican.length;i++){%>
+                    <li><a href="/item/<%=Mexican[i].type%>/<%=Mexican[i].name%>"><%=Mexican[i].name%></a></li>
+                <%}%>
+             </ul>
+           </li>
+           <li id="italian"><a href="#">Italian</a>
+             <ul>
+                <%for(var i=0;i<Italian.length;i++){%>
+                    <li><a href="/item/<%=Italian[i].type%>/<%=Italian[i].name%>"><%=Italian[i].name%></a></li>
+                    <%}%>
+             </ul>
+           </li>
+           <li id="continental"><a href="#">Continental</a>
+             <ul>
+                <%for(var i=0;i<Continental.length;i++){%>
+                    <li><a href="/item/<%=Continental[i].type%>/<%=Continental[i].name%>"><%=Continental[i].name%></a></li>
+                    <%}%>
+             </ul>
+           </li>
+           </ul>   
+         </nav>
+         <%if(state==false){%> 
+          <div class="formdiv">
+          </div>
+         <%}%>
+        <h1 id="app-title">Our deals</h1>
+        <%if(msg&&msg.length>0){%>
+        <div id="showmsg"><%=msg%></div>
+        <%}%>
+        <div id="deals">
+                <%for(var i=0;i<4;i++){%> 
+                      <a href="/item/<%=Indian[i].type%>/<%=Indian[i].name%>">
+                      <div class="deal-item">
+                      <img src="<%=Indian[i].photo%>">  
+                      <p><%=Indian[i].name%></p>
+                    </div>
+                  </a>  
+                 <%}%>
+                 <%for(var i=0;i<3;i++){%>
+                    <a href="/item/<%=Chinese[i].type%>/<%=Chinese[i].name%>">
+                      <div class="deal-item">
+                      <img src="<%=Chinese[i].photo%>">  
+                      <p><%=Chinese[i].name%></p>
+                    </div>
+                  </a>  
+                 <%}%>
+                 <%for(var i=0;i<3;i++){%>
+                    <a href="/item/<%=Mexican[i].type%>/<%=Mexican[i].name%>">
+                      <div class="deal-item">
+                      <img src="<%=Mexican[i].photo%>">  
+                      <p><%=Mexican[i].name%></p>
+                    </div>
+                  </a>  
+                 <%}%>
+                 <%for(var i=0;i<3;i++){%>
+                    <a href="/item/<%=Italian[i].type%>/<%=Italian[i].name%>">
+                      <div class="deal-item">
+                      <img src="<%=Italian[i].photo%>">  
+                      <p><%=Italian[i].name%></p>
+                    </div>
+                  </a>  
+                 <%}%>
+                 <%for(var i=0;i<3;i++){%>
+                    <a href="/item/<%=Continental[i].type%>/<%=Continental[i].name%>">
+                      <div class="deal-item">
+                      <img src="<%=Continental[i].photo%>">  
+                      <p><%=Continental[i].name%></p>
+                    </div>
+                  </a>  
+                 <%}%>    
+         </div>
+       <%if(state==false){%>   
+        <script src="/show.js"></script>
+      <%}%>
+    </body>
+</html>

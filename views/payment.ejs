@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>Foodie</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" href="/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Noto+Sans+HK&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Exo&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Jura&display=swap" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+    </head>
+    <body id="payment-page">
+         <h1 id="payment-title">Payment page</h1>
+         <div id="products">
+                <%for(var i=0;i<order.length;i++){%> 
+                        <div class="product-cart">
+                           <img src="<%=order[i].photo%>">
+                           <a href="/product/delete/<%=order[i].name%>/<%=order[i].type%>"><i class="fas fa-times delete-button"></i></a>
+                          <div>   
+                           <p><strong>Name</strong> - <%=order[i].name%></p>
+                           <p><strong>Type</strong> - <%=order[i].type%></p>
+                           <p><strong>Quantity</strong> - <%=order[i].quantity%></p>
+                           <p class="price"><strong>Price</strong> - <i class="fas fa-rupee-sign"></i><%=order[i].price%></p>  
+                          </div>
+                        </div>
+                    <%}%>
+                  <p id="total"><strong>Grand Total</strong> : <i class="fas fa-rupee-sign"></i><%=total%></p>  
+         </div>
+         <div id="payment">
+             <h2>Choose from the following payment methods below</h2>
+             <label><input type="radio" name="payment-type" class="payment-select" value="cash">Cash on delivery</label><br>
+             <label><input type="radio" name="payment-type" class="payment-select" value="card">Credit/Debit card</label>
+         </div>
+        <form action="/getpayment" method="POST" id="card">
+            <script
+              src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+              data-key="pk_test_J50FQycn5pgCHiNNPTtjtMPd00TNbVHP8t"
+              data-amount="<%=total%>"
+              data-name="Foodie"
+              data-description="Online food ordering platform"
+              data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+              data-locale="auto">
+            </script>
+          </form> 
+          <script src="payment.js"></script>  
+    </body>
+</html>
